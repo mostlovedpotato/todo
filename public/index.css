@@ -1,0 +1,9 @@
+body {
+    background-image: url("background.jpg");
+    background-color: SaddleBrown;
+    color: SeaGreen;
+    font-size: x-large;
+    text-shadow: 1px 1px Yellow;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
