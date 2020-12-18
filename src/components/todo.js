@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import "./so.css";
+
 function Todo() {
   const [work,setWork]=useState("");
   const [list,setList]=useState([]);
+  // const [keydown,setKeydown]=useState(false);
+  const yeahRef = useRef(null);
+  const buttRef= useRef(null);
+// xd there is no second input no need for focus just one time focus is enough
+  function firstKeyDown(e) {
+    if(e.key==="Enter"){
+      buttRef.current.focus();
+    }
+  }
+  useEffect(() => {      
+    yeahRef.current.focus();
+  }, [])
+
+  // useEffect(()=>{
+
+  // })
   
   const handleChange=(e)=>{
     setWork(e.target.value);
@@ -40,8 +57,8 @@ function Todo() {
   return (
     <div>
       <div className="todo">
-        <input type="text" value={work} name="text" id="text" onChange={(e)=>handleChange(e)} placeholder="Add Task here ...."></input>
-        <button className="add-btn" onClick={AddTask}>
+        <input type="text" ref={yeahRef} onKeyDown={firstKeyDown} value={work} name="text" id="text" onChange={(e)=>handleChange(e)} placeholder="Add Task here ...."></input>
+        <button className="add-btn" onClick={AddTask} ref={buttRef}>
           Add
         </button>
         <br></br>
